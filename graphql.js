@@ -1,35 +1,21 @@
 const { ApolloServer, gql } = require('apollo-server-lambda');
 import { MONGO_CONNECTION_STRING } from './db/config';
-import {User} from './db/user';
+import { User as models } from './db/user';
+import{ resolvers, resolvers } from './graphql/schema';
 
 const connectMongo = () => {
-  return mongoose.connect( MONGO_CONNECTION_STRING , {useNewUrlParser : true, useFindAndModify: false, useUnifiedTopology: true})
+  return mongoose.connect(MONGO_CONNECTION_STRING, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
 }
 
 connectMongo().then(() => {
-  console.log("Connected To The MongoDB.")  
+  console.log("Connected To The MongoDB.")
 }).catch(err => {
   console.log("DB Connection Server Error : ", err)
 })
 
-
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
-
-const server = new ApolloServer({ 
-  typeDefs, 
-  resolvers, 
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
   playground: {
     endpoint: "/dev/graphql"
   },
@@ -37,8 +23,8 @@ const server = new ApolloServer({
     headers: event.headers,
     functionName: context.functionName,
     event,
-    context,
-  })
+    context
+  }, models)
 });
 
 exports.graphqlHandler = server.createHandler({

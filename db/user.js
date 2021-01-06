@@ -10,5 +10,5 @@ import mongoose, { model } from 'mongoose'
 
 const userSchema = new mongoose.Schema({ name: String })
 
-const User = mongoose.model('User', userSchema)
-module.exports = User
+export const User = mongoose.model('testcoll', userSchema)
+ 

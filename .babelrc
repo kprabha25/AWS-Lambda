@@ -1,0 +1,16 @@
+// {
+//     "presets": [
+//       [
+//         "@babel/preset-env", {
+//           "targets": {
+//             "node": "current"
+//           }
+//         }
+//       ]
+//     ]
+//   }
+
+// .babelrc
+{
+  "presets": ["@babel/preset-env"]
+}
