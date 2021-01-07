@@ -4,7 +4,10 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "dev": "nodemon --exec babel-node local.js"
+    "dev": "nodemon --exec babel-node local.js",
+    "build": "babel lib -d dist",
+    "start": "npm run build && nodemon dist/graphql.js",
+    "serve": "node dist/graphql.js"
   },
   "keywords": [],
   "author": "",
@@ -13,16 +16,20 @@
     "apollo-server": "^2.19.1",
     "apollo-server-express": "^2.19.1",
     "apollo-server-lambda": "^2.19.1",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "graphql": "^15.4.0",
     "mongoose": "^5.11.10"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.10.3",
     "@babel/node": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/register": "^7.10.3",
     "axios": "^0.19.2",
     "nodemon": "^2.0.4"
-  }
+  },
+  "type": "module"
 }
