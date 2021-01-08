@@ -50,3 +50,55 @@ https://www.gorillastack.com/news/optimizing-your-lambda-cold-starts-with-server
 https://medium.com/code-oil/webpack-javascript-bundling-for-both-front-end-and-back-end-b95f1b429810
 https://serverlessfirst.com/fff-webpacking-lambdas/
 https://thecodebarbarian.com/bundling-a-node-js-function-for-aws-lambda-with-webpack
+
+-----
+old package.json
+==============
+{
+  "name": "aws-serverless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node local.js",
+    "build1": "babel lib -d dist",
+    "start": "npm run build && nodemon dist/graphql.js",
+    "serve": "node dist/graphql.js",
+    "webpack": "webpack",
+    "build2": "webpack --mode production --progress",
+    "build": "webpack --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "apollo-server": "^2.19.1",
+    "apollo-server-express": "^2.19.1",
+    "apollo-server-lambda": "^2.19.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-runtime": "^6.26.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.4.0",
+    "mongoose": "^5.11.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "axios": "^0.19.2",
+    "nodemon": "^2.0.4",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "type": "module"
+}
