@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server-lambda');
+//const { ApolloServer, gql } = require('apollo-server-lambda');
 import { ApolloServer, ApolloError, UserInputError } from 'apollo-server-express';
 import 'dotenv/config';
 import { MONGO_CONNECTION_STRING, PORT } from '../config/config';
